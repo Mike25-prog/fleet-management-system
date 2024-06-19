@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Vehicle Management: Keep track of all vehicles in your fleet, including their make, model, year, registration details, and current status.
+Maintenance Scheduling: Schedule and track maintenance tasks for each vehicle, ensuring timely service and preventing breakdowns.
+Fuel Monitoring: Monitor fuel consumption and costs across your fleet, enabling data-driven decisions and cost optimization.
+Driver Assignment: Assign drivers to vehicles and manage their schedules, ensuring efficient resource allocation.
+Route Planning: Plan and optimize routes for your fleet, considering factors such as traffic, weather, and vehicle capacities.
+Reporting and Analytics: Generate comprehensive reports and visualize data through intuitive dashboards, enabling informed decision-making.
 
-## Available Scripts
+## Technologies Used
 
-In the project directory, you can run:
+Frontend: React.js
+Backend: Node.js, Express.js
+Database: MongoDB
+Authentication: JSON Web Tokens (JWT)
+Maps and Routing: Google Maps API, Mapbox API
 
-### `npm start`
+Getting Started
+Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Node.js (version X.X.X or later)
+MongoDB (version X.X.X or later)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Installation
 
-### `npm test`
+Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Copygit clone https://github.com/your-username/fleet-management-system.git
 
-### `npm run build`
+Navigate to the project directory:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Copycd fleet-management-system
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install the dependencies for the backend:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Copycd backend
+npm install
 
-### `npm run eject`
+Install the dependencies for the frontend:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Copycd ../frontend
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Set up the environment variables for the backend and frontend as per your configuration.
+Start the backend server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Copycd ../backend
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Start the frontend development server:
 
-## Learn More
+Copycd ../frontend
+npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Open your browser and navigate to http://localhost:3000 to access the Fleet Management System.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributing
+We welcome contributions to improve the Fleet Management System. If you encounter any issues or have suggestions for new features, please open an issue or submit a pull request.
+License
+This project is licensed under the MIT License.
+Acknowledgments
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+React.js
+Node.js
+Express.js
+MongoDB
+Google Maps API
+Mapbox API

@@ -1,21 +1,21 @@
-const _query = require('../config/db').query;
+const connection = require('../config/db');
 
 const Location = {
     getAll: (callback) => {
         const query = 'SELECT * FROM locations';
-        _query(query, callback);
+        connection.query(query, callback);
     },
     writeNew: (data, callback) => {
         const query = 'INSERT INTO locations SET ?';
-        _query(query, data, callback);
+        connection.query(query, data, callback);
     },
     update: (data, callback) => {
         const query = 'UPDATE locations SET ? WHERE id = ?';
-        _query(query, data, callback);
+        connection.query(query, data, callback);
     },
     delete: (id, callback) => {
         const query = 'DELETE FROM locations WHERE id = ?';
-        _query(query, id, callback);
+        connection.query(query, id, callback);
     }
 };
 module.exports = Location;  

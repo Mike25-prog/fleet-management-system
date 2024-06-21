@@ -1,5 +1,4 @@
-import { query as _query } from '../config/db';
-
+const _query = require('../config/db').query;
 const Vehicle = {
     getAll: (callback) => {
         const query = 'SELECT * FROM vehicles';
@@ -21,4 +20,4 @@ const Vehicle = {
 
 };
 
-export default Vehicle;
+module.exports = Vehicle;

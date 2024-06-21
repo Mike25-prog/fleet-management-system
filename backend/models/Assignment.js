@@ -1,4 +1,4 @@
-import {query as _query} from '../config/db';
+const _query = require('../config/db').query;
 
 const Assignment = {
     getAll: (callback) => {
@@ -18,3 +18,5 @@ const Assignment = {
         _query(query, id, callback);
     }
 };
+
+module.exports = Assignment;

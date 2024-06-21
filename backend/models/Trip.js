@@ -1,4 +1,4 @@
-import { query as _query } from '../config/db';
+const _query = require('../config/db').query;
 
 const Trip = {
     getAll: (callback) => {
@@ -18,3 +18,4 @@ const Trip = {
         _query(query, id, callback);
     }
 };
+module.exports = Trip;

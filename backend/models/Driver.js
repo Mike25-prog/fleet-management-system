@@ -1,4 +1,5 @@
-import {query as _query} from '../config/db';
+const _query = require('../config/db').query;
+
 
 const Driver = {
     getAll: (callback) => {
@@ -18,3 +19,4 @@ const Driver = {
         _query(query, id, callback);
     }
 };
+module.exports = Driver;

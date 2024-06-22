@@ -1,0 +1,27 @@
+backend/
+├── config/
+│   └── db.js
+├── models/
+│   └── Vehicle.js
+│   └── Driver.js
+│   └── Assignment.js
+│   └── Maintenance.js
+│   └── FuelLog.js
+│   └── Location.js
+│   └── Trip.js
+│   └── Waypoint.js
+│   └── Accident.js
+├── routes/
+│   └── vehicles.js
+│   └── drivers.js
+│   └── assignments.js
+│   └── maintenance.js
+│   └── fuellogs.js
+│   └── locations.js
+│   └── trips.js
+│   └── waypoints.js
+│   └── accidents.js
+├── .env
+├── app.js
+├── package.json
+└── server.js

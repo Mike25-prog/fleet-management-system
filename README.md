@@ -15,9 +15,9 @@ A comprehensive fleet management solution with real-time tracking, route optimiz
 ## Tech Stack
 
 - Backend: Node.js with Express.js
-- Database: SQL (PostgreSQL)
+- Database: SQL (MySQL)
 - Maps Integration: Google Maps API
-- Frontend: React (not included in this repository)
+- Frontend: React
 
 ## Prerequisites
 

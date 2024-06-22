@@ -23,5 +23,5 @@ A comprehensive fleet management solution with real-time tracking, route optimiz
 
 - Node.js (v14.0.0 or later)
 - npm (v6.0.0 or later)
-- PostgreSQL (v12.0 or later)
+- MySQL (v8.0 or later)
 - Google Maps API key

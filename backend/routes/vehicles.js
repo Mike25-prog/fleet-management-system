@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
 }
 );
 router.put('/:id', (req, res) => {
-    Vehicle.update([req.body, req.params.id], (err, results) => {
+    Vehicle.update(req.params.id,req.body, (err, results) => {
         if (err) return res.status(500).send(err);
         res.json(results);
     }

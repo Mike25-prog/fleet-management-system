@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
     `location_id` int NOT NULL,
     `location_details` json NOT NULL,
     PRIMARY KEY (`vehicle_id`),
-    FOREIGN KEY (`location_id`) REFERENCES `locations`(`location_id`)
 );
 
 CREATE TABLE IF NOT EXISTS `drivers` (

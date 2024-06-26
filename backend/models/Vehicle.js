@@ -17,8 +17,7 @@ const Vehicle = {
         }
         const query = 'INSERT INTO vehicles SET ?';
         const vehicleData = { 
-            ...data, 
-            location_details: JSON.stringify(data.location_details) 
+            ...data
         };
         connection.query(query, vehicleData, (err, results) => {
             if (err) return callback(err);
@@ -34,8 +33,7 @@ const Vehicle = {
         }
         const query = 'UPDATE vehicles SET ? WHERE vehicle_id = ?';
         const vehicleData = { 
-            ...data, 
-            location_details: JSON.stringify(data.location_details) 
+            ...data
         };
         connection.query(query, [vehicleData, id], (err, results) => {
             if (err) return callback(err);

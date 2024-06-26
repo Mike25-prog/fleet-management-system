@@ -7,11 +7,17 @@ const Location = {
     },
     writeNew: (data, callback) => {
         const query = 'INSERT INTO locations SET ?';
-        connection.query(query, data, callback);
+        const locationData = {
+            ...data,location_details: JSON.stringify(data.location_details)
+        }
+        connection.query(query, locationData, callback);
     },
     update: (data, callback) => {
         const query = 'UPDATE locations SET ? WHERE id = ?';
-        connection.query(query, data, callback);
+        const locationData = {
+            ...data,location_details: JSON.stringify(data.location_details)
+        }
+        connection.query(query, locationData, callback);
     },
     delete: (id, callback) => {
         const query = 'DELETE FROM locations WHERE id = ?';

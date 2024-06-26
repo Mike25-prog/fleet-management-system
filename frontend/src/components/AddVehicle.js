@@ -37,7 +37,15 @@ const AddVehicle = () => {
                 console.log(data);
             })
             .then(() => {
-                toast.success('Vehicle added successfully');
+                toast.success('Vehicle added successfully', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             })
             .then(() => {
                 setVehicleData({

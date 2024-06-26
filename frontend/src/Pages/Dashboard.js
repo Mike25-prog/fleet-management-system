@@ -1,6 +1,6 @@
 import React from 'react'
 import SideBar from '../components/sideBar'
-const Home = () => {
+const Dashboard = () => {
   return (
     <div>
       <SideBar/>
@@ -8,4 +8,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Dashboard

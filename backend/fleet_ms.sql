@@ -1,16 +1,7 @@
 CREATE DATABASE fleet_ms;
 USE fleet_ms;
 
-CREATE TABLE IF NOT EXISTS `locations` (
-    `location_id` int AUTO_INCREMENT NOT NULL,
-    `name` varchar(100) NOT NULL,
-    `address` text NOT NULL,
-    `city` varchar(50) NOT NULL,
-    `state` varchar(50) NOT NULL,
-    `zip_code` varchar(10) NOT NULL,
-    `location_details` json NOT NULL,
-    PRIMARY KEY (`location_id`)
-);
+
 CREATE TABLE IF NOT EXISTS `users` (
     `user_id` int AUTO_INCREMENT NOT NULL,
     `username` varchar(50) NOT NULL UNIQUE,
@@ -30,8 +21,7 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
     `model` varchar(50) NOT NULL,
     `year` int NOT NULL,
     `status` varchar(20) NOT NULL,
-    `location_id` int NOT NULL,
-    `location_details` json NOT NULL,
+   `image` varchar(255) NOT NULL,
     PRIMARY KEY (`vehicle_id`),
 );
 
@@ -107,3 +97,4 @@ CREATE TABLE IF NOT EXISTS `incidents` (
     FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`vehicle_id`),
     FOREIGN KEY (`driver_id`) REFERENCES `drivers`(`driver_id`)
 );
+

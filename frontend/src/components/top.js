@@ -21,6 +21,7 @@ const Header = () => {
         <div style={{
           display:'flex',
           flexDirection:'row',
+          marginLeft:60,
           
         }}>
         <img src={truckImg} /><p style={{marginLeft:10,color:'#228800',fontSize:20,fontWeight:'bold'}}>My Fleet</p>

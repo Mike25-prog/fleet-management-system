@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.table-container {
+    width: 100%;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #f7f7f7;
+}
+
+th,td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #5f0c85;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 700;
+    width: 24%;
+
+}
+
+th {
+    font-size: 18px;
+    color: rgb(11, 11, 73);
+    font-weight: bold;
+   
+
+    font-family:'Times New Roman', Times, serif;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.vehicle-info {
+    display: flex;
+    align-items: center;
+}
+
+.vehicle-info img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.vehicle-info .date {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-left: 8px;
+}
+
+.available {
+    color: #2ECC71;
+    font-weight: bold;
+}

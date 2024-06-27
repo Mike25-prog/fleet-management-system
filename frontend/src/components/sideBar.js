@@ -29,13 +29,13 @@ const SideBar = () => {
         <div className="sidebar-item"><FontAwesomeIcon icon={faChartSimple} size='lg'/>   Analytics</div>
         </Link>
         <Link style={{textDecoration:'none',color:'#228800'}}  to='/settings'>
-        <div className="settings">< FontAwesomeIcon icon={faGear} size='lg'  />Settings</div>
+        <div className="settings" >< FontAwesomeIcon icon={faGear} size='lg'  />Settings</div>
         </Link>
         <Link style={{textDecoration:'none',color:'#228800'}}  to='/'>
         <div className="log-out">< FontAwesomeIcon icon={faSignOutAlt } size='lg'  />Log out</div>
         </Link>
       </aside>
-    </div>
+    </div> 
     </>
   )
 }

@@ -1,16 +1,23 @@
 import React, { useState, useContext } from 'react';
 import './AddForm.css';
+import ComboBox from 'react-responsive-combo-box';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const AddVehicle = () => {
+    const options = [
+        'Truck',
+        'Pick-Up',
+        'Vans',
+    ]
     const [vehicleData, setVehicleData] = useState({
         number_plate: '',
         make: '',
         model: '',
         year: 0,
         status: '',
-        image: ''
+        image: '',
+        type:''
     });
  const [preview, setPreview] = useState('');
  const [imageData, setImageData] = useState(null);
@@ -98,6 +105,18 @@ const AddVehicle = () => {
                             Status:
                             <input className="add-input" required type="text" name="status" value={vehicleData.status} onChange={handleChange} />
                         </label>
+                        <label className="add-label">
+                            Type:
+                            </label>
+                            <ComboBox
+                                options={options}
+                                placeholder='Select vehicle type'
+                                onSelect={(option) => {
+                                    setVehicleData({
+                                        ...vehicleData,
+                                        type: option
+                                    });
+                                }}/>
                         <button className="add-button" type="submit">Add Vehicle</button>
                         
                     </form>

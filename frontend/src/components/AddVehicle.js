@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
 import './AddForm.css';
+import { useNavigate } from 'react-router-dom';
 import ComboBox from 'react-responsive-combo-box';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const AddVehicle = () => {
+    const navigate=useNavigate()
     const options = [
         'Truck',
         'Pick-Up',
@@ -54,6 +56,9 @@ const AddVehicle = () => {
                     progress: undefined,
                 });
             })
+
+           
+
             .then(() => {
                 setVehicleData({
                     number_plate: '',
@@ -61,7 +66,8 @@ const AddVehicle = () => {
                     model: '',
                     year: 0,
                     status: '',
-                    image: ''
+                    image: '',
+                    type:null
                 });
             })
             .catch(error => {

@@ -48,7 +48,7 @@ const Login = () => {
             const data = await response.json();
             console.log(data);
             alert('Login successful!');
-            setUser(data.username);
+            setUser(data);
             navigate('/dashboard'); // Redirect to the dashboard or home page after successful login
         } catch (error) {
             console.error(error);

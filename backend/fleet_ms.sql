@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
     `year` int NOT NULL,
     `status` varchar(20) NOT NULL,
    `image` varchar(255) NOT NULL,
+   `type` varchar(50) NOT NULL,
     PRIMARY KEY (`vehicle_id`),
 );
 

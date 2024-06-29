@@ -16,11 +16,13 @@ const Header = () => {
       position:'sticky',
       borderBottom:'2px solid lightgray',
       boxShadow: '0 4px 10px 0 rgba(0,0,0,0.1)',
+      zIndex:2
 
     }}>
         <div style={{
           display:'flex',
           flexDirection:'row',
+          marginLeft:60,
           
         }}>
         <img src={truckImg} /><p style={{marginLeft:10,color:'#228800',fontSize:20,fontWeight:'bold'}}>My Fleet</p>
@@ -32,7 +34,7 @@ const Header = () => {
         }}>
          {/*notification*/} 
          <FontAwesomeIcon icon={faBell} color='#228800' size='2x' style={{marginRight:20,justifySelf:'center'}}/>
-         <p>Name</p>
+         <p >Name</p>
          {console.log(user)}
         </div>
     </header>

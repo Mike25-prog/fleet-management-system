@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const FuelLog =require('../models/FuelLog');
+const FuelLog = require('../models/FuelLog');
 router.get('/', (req, res) => {
     FuelLog.getAll((err, results) => {
         if (err) return res.status(500).send(err);

@@ -7,9 +7,7 @@ const Vehicles = () => {
     const [vehicles, setVehicles] = useState([]);
 
     useEffect(() => {
-        fetch(url, {
-            method: 'GET',
-        })
+        fetch(url, { method: 'GET',})
             .then(res => res.json())
             .then(data => setVehicles(data))
             .catch(error => console.error('Error fetching data:', error));

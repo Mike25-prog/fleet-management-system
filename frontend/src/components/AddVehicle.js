@@ -81,7 +81,10 @@ const AddVehicle = () => {
     };
 
     return (
-        <div className="container">
+        <div style={{
+            width: '100%',
+            display: 'flex',
+        }}>
             <div className="form-container">
                 <div className="form-section">
                     <h2>Add Vehicle</h2>

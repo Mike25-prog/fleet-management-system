@@ -1,10 +1,23 @@
 import { faTruck,faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React,{useContext} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import { UserContext } from '../context/userContext'
 import truckImg from '../Assets/TruckIcon.jpg'
 const Header = () => {
-  const {user} = useContext(UserContext)
+  const {user,setUser} = useContext(UserContext)
+  const [userName,setUserName] = useState('')
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user')
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser)
+      setUser(parsedUser)  // Update the context
+      setUserName(parsedUser.user.username)
+    } else if (user && user.user) {
+      // If user data is in context but not in localStorage, save it
+      localStorage.setItem('user', JSON.stringify(user))
+      setUserName(user.user.username)
+    }
+  }, [user, setUser])
   return (
     <header style={{
       width:'100%',
@@ -34,7 +47,7 @@ const Header = () => {
         }}>
          {/*notification*/} 
          <FontAwesomeIcon icon={faBell} color='#228800' size='2x' style={{marginRight:20,justifySelf:'center'}}/>
-         <p >Name</p>
+         <p >{userName}</p>
          {console.log(user)}
         </div>
     </header>

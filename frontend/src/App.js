@@ -5,9 +5,11 @@ import { UserProvider } from './context/userContext'
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Vehicles from './Pages/Vehicles'
 const App = () => {
   return (
-
   <BrowserRouter>
   <UserProvider>
     
@@ -16,10 +18,14 @@ const App = () => {
       <Route path='/register' element={<Register/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/add-vehicle' element={<AddVehicle/>}/>
+      <Route path='/vehicles' element={<Vehicles/>}/>
+      
+     
     </Routes>
-
+    
     </UserProvider>
   </BrowserRouter>
+
 
     
   )

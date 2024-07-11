@@ -2,6 +2,7 @@ import React, { useState,useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import { UserContext } from '../context/userContext';
+import { toast } from 'react-toastify';
 const Login = () => {
     const [formData, setFormData] = useState({
         username: '',
@@ -47,19 +48,20 @@ const Login = () => {
 
             const data = await response.json();
             console.log(data);
-            alert('Login successful!');
+            toast('Login successful!');
             setUser(data);
             navigate('/dashboard'); // Redirect to the dashboard or home page after successful login
         } catch (error) {
             console.error(error);
-            alert('Login failed!');
+            toast('Login failed!'+error.message);
         }
     };
 
     return (
         <div className="login-container">
-            <h2>Login</h2>
+           
             <form onSubmit={handleSubmit} className="login-form">
+                <h1>Login</h1>
                 <div className="form-group">
                     <label>Username:</label>
                     <input type="text" name="username" value={formData.username} onChange={handleChange} required />
@@ -69,9 +71,10 @@ const Login = () => {
                     <input type="password" name="password" value={formData.password} onChange={handleChange} required />
                 </div>
                 <button type="submit" className="login-button">Login</button>
+                <a href="/register" color='#03C2CB' style={{textAlign:'center'}}>Don't have an account? Register here</a>
             </form>
             <div style={{display:'flex',justifyContent:'center'}}>
-            <a href="/register" color='#03C2CB'>Don't have an account? Register here</a>
+            
             </div>
         </div>
     );

@@ -98,4 +98,22 @@ CREATE TABLE IF NOT EXISTS `incidents` (
     FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`vehicle_id`),
     FOREIGN KEY (`driver_id`) REFERENCES `drivers`(`driver_id`)
 );
+CREATE TABLE IF NOT EXISTS `passengers` (
+    `passenger_id` int AUTO_INCREMENT NOT NULL,
+    `first_name` varchar(50) NOT NULL,
+    `last_name` varchar(50) NOT NULL,
+    `contact_number` varchar(15) NOT NULL,
+    `email` varchar(100) NOT NULL,
+    PRIMARY KEY (`passenger_id`)
+);
 
+CREATE TABLE IF NOT EXISTS `bookings` (
+    `booking_id` int AUTO_INCREMENT NOT NULL,
+    `trip_id` int NOT NULL,
+    `passenger_id` int NOT NULL,
+    `seat_number` varchar(10) NOT NULL,
+    `booking_date` timestamp DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`booking_id`),
+    FOREIGN KEY (`trip_id`) REFERENCES `trips`(`trip_id`),
+    FOREIGN KEY (`passenger_id`) REFERENCES `passengers`(`passenger_id`)
+);

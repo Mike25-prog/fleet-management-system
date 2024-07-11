@@ -4,6 +4,7 @@ import './Dashboard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTruck,faTruckPickup,faVanShuttle,faDollarSign,faClipboardCheck, faTriangleExclamation, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import TruckSideImg from '../Assets/TruckSide.jpg'
+import Map from '../components/Map'
 const Dashboard = () => {
   const isProfit = false
   return (
@@ -16,7 +17,6 @@ const Dashboard = () => {
         width: '100%',
         
       }}>
-      <h1>Your fleet at a glance</h1>
       <div style={{
         display: 'flex',
         flexDirection: 'row',
@@ -125,12 +125,22 @@ const Dashboard = () => {
         <div style={{
           display:'flex',
           flexDirection:'column'
+          
         }}>
         <h4>Live Tracking</h4>
         <img src='https://www.w3schools.com/w3images/avatar3.png' style={{
           width:'40%', borderRadius:'50%',
         }}/>
         <p>Driver Name</p>
+        </div>
+        <div style={{
+          width:'40%',
+          
+          border:'2px solid black',
+          justifyContent:'center',
+          alignItems:'center'
+        }}>
+          <Map/>
         </div>
     </div>
     </div>

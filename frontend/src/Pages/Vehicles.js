@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import Header from '../components/top';
 import SideBar from '../components/sideBar';
 
 const Vehicles = () => {
     const url = 'http://localhost:5000/api/vehicles';
     const [vehicles, setVehicles] = useState([]);
+=======
+import SideBar from '../components/sideBar';
+import AddVehicle from '../components/AddVehicle';
+import EditVehicle from '../components/EditVehicle';
+import './Vehicles.css';
+const Vehicles = () => {
+    const url = 'http://localhost:5000/api/vehicles';
+    const [vehicles, setVehicles] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState(null);
+>>>>>>> f36a2ce470e9233f9df777f897e1f738f0678ab3
 
     useEffect(() => {
         fetch(url, { method: 'GET',})
@@ -13,6 +25,7 @@ const Vehicles = () => {
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
+<<<<<<< HEAD
     return (
         <div>
             <SideBar />
@@ -24,6 +37,28 @@ const Vehicles = () => {
                     width: '100%',
                 }}
             >
+=======
+    const openAddModal = () => {
+        setModalContent(<AddVehicle onClose={() => setIsModalOpen(false)} />);
+        setIsModalOpen(true);
+    };
+
+    const openEditModal = (vehicle) => {
+        setModalContent(<EditVehicle vehicle={vehicle} onClose={() => setIsModalOpen(false)} />);
+        setIsModalOpen(true);
+    };
+
+    const handleDelete = (id) => {
+        // Implement delete functionality
+        console.log(`Delete vehicle with id: ${id}`);
+    };
+
+    return (
+        <div>
+        <SideBar/>
+        <div className='vehicle-container'>
+            <div className="content-area">
+>>>>>>> f36a2ce470e9233f9df777f897e1f738f0678ab3
                 <table>
                     <thead>
                         <tr>
@@ -33,8 +68,13 @@ const Vehicles = () => {
                             <th>model</th>
                             <th>year</th>
                             <th>status</th>
+<<<<<<< HEAD
                             <th>image</th>
                             <th>type</th>
+=======
+                            <th>type</th>
+                            <th>Actions</th>
+>>>>>>> f36a2ce470e9233f9df777f897e1f738f0678ab3
                         </tr>
                     </thead>
                     <tbody>
@@ -46,15 +86,43 @@ const Vehicles = () => {
                                 <td>{vehicle.model}</td>
                                 <td>{vehicle.year}</td>
                                 <td>{vehicle.status}</td>
+<<<<<<< HEAD
                                 <td><img src={vehicle.image} alt={vehicle.model} width="100" /></td>
                                 <td>{vehicle.type}</td>
+=======
+                                <td>{vehicle.type}</td>
+                                <td>
+                                    <button className="edit-button" onClick={() => openEditModal(vehicle)}>Edit</button>
+                                    <button className="delete-button" onClick={() => handleDelete(vehicle.id)}>Delete</button>
+                                </td>
+>>>>>>> f36a2ce470e9233f9df777f897e1f738f0678ab3
                             </tr>
                         ))}
                     </tbody>
                 </table>
+<<<<<<< HEAD
             </div>
         </div>
     );
 }
 
 export default Vehicles;
+=======
+                <button className="add-button" onClick={openAddModal}>Add New Vehicle</button>
+            </div>
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        {modalContent}
+                        <button className="close-button" onClick={() => setIsModalOpen(false)}>Close</button>
+                    </div>
+                </div>
+            )}
+        </div>
+        </div>
+
+    );
+}
+
+export default Vehicles;
+>>>>>>> f36a2ce470e9233f9df777f897e1f738f0678ab3

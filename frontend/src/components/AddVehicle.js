@@ -63,6 +63,7 @@ const AddVehicle = () => {
                     status: '',
                     image: ''
                 });
+                
             })
             .catch(error => {
                 // Handle any errors that occur during the request

@@ -1,21 +1,35 @@
+const bcrypt = require('bcrypt');
 const connection = require('../config/db');
 
 const Passenger = {
-    getAll: (callback) => {
-        const query = 'SELECT * FROM passengers';
-        connection.query(query, callback);
+    create: async (data, callback) => {
+        try {
+            console.log('Data received for passenger creation:', data);
+            const hashedPassword = await bcrypt.hash(data.password, 10);
+            const query = 'INSERT INTO passengers SET ?';
+            const passengerData = { ...data, password: hashedPassword };
+            console.log('Query and passengerData:', query, passengerData);
+            connection.query(query, passengerData, (err, results) => {
+                if (err) {
+                    console.error('Error in query:', err);
+                    return callback(err);
+                }
+                callback(null, results);
+            });
+        } catch (error) {
+            console.error('Error in bcrypt:', error);
+            callback(error);
+        }
     },
-    writeNew: (data, callback) => {
-        const query = 'INSERT INTO passengers SET ?';
-        connection.query(query, data, callback);
-    },
-    update: (data, callback) => {
-        const query = 'UPDATE passengers SET ? WHERE id = ?';
-        connection.query(query, data, callback);
-    },
-    delete: (id, callback) => {
-        const query = 'DELETE FROM passengers WHERE id = ?';
-        connection.query(query, id, callback);
+    findByEmail: (email, callback) => {
+        const query = 'SELECT * FROM passengers WHERE email = ?';
+        connection.query(query, [email], (err, results) => {
+            if (err) {
+                console.error('Error in query:', err);
+                return callback(err);
+            }
+            callback(null, results[0]);
+        });
     }
 };
 

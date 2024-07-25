@@ -1,21 +1,35 @@
-const connection = require('../config/db');
+// models/Trip.js
+const { DataTypes } = require('sequelize');
+const sequelize = require('./db');
 
-const Trip = {
-    getAll: (callback) => {
-        const query = 'SELECT * FROM trips';
-        connection.query(query, callback);
-    },
-    writeNew: (data, callback) => {
-        const query = 'INSERT INTO trips SET ?';
-        connection.query(query, data, callback);
-    },
-    update: (data, callback) => {
-        const query = 'UPDATE trips SET ? WHERE id = ?';
-        connection.query(query, data, callback);
-    },
-    delete: (id, callback) => {
-        const query = 'DELETE FROM trips WHERE id = ?';
-        connection.query(query, id, callback);
-    }
-};
+const Trip = sequelize.define('Trip', {
+  date: {
+    type: DataTypes.DATEONLY,
+    allowNull: false,
+  },
+  time: {
+    type: DataTypes.TIME,
+    allowNull: false,
+  },
+  origin: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  destination: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  vehicleId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  driverId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+}, {
+  tableName: 'trips',
+  timestamps: false,
+});
+
 module.exports = Trip;

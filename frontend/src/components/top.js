@@ -2,12 +2,13 @@ import { faTruck,faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React,{useContext, useEffect, useState} from 'react'
 import { UserContext } from '../context/userContext'
-import truckImg from '../Assets/TruckIcon.jpg'
+import van from '../Assets/van.jpg'
 const Header = () => {
   const {user,setUser} = useContext(UserContext)
   const [userName,setUserName] = useState('')
+  const storedUser = localStorage.getItem('user')
   useEffect(() => {
-    const storedUser = localStorage.getItem('user')
+    
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser)
       setUser(parsedUser)  // Update the context
@@ -17,7 +18,7 @@ const Header = () => {
       localStorage.setItem('user', JSON.stringify(user))
       setUserName(user.user.username)
     }
-  }, [user, setUser])
+  }, [])
   return (
     <header style={{
       width:'100%',
@@ -38,7 +39,7 @@ const Header = () => {
           marginLeft:60,
           
         }}>
-        <img src={truckImg} /><p style={{marginLeft:10,color:'#228800',fontSize:20,fontWeight:'bold'}}>My Fleet</p>
+        <img src={van} /><p style={{marginLeft:10,color:'#228800',fontSize:20,fontWeight:'bold'}}>My Fleet</p>
         </div>
         <div style={{
           display:'flex',
@@ -48,7 +49,6 @@ const Header = () => {
          {/*notification*/} 
          <FontAwesomeIcon icon={faBell} color='#228800' size='2x' style={{marginRight:20,justifySelf:'center'}}/>
          <p >{userName}</p>
-         {console.log(user)}
         </div>
     </header>
       )

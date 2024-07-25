@@ -8,6 +8,8 @@ import Register from './Pages/Register';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Vehicles from './Pages/Vehicles'
+import Maintenance from './Pages/Maintenance';
+import TripManagement from './components/TripManagement';
 const App = () => {
   return (
   <BrowserRouter>
@@ -19,6 +21,8 @@ const App = () => {
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/add-vehicle' element={<AddVehicle/>}/>
       <Route path='/vehicles' element={<Vehicles/>}/>
+      <Route path='/maintenance'element={<Maintenance/>} />
+      <Route path='/trip-management'element={<TripManagement/>} />
       
      
     </Routes>

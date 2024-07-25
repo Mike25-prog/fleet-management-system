@@ -3,7 +3,7 @@ import SideBar from '../components/sideBar'
 import './Dashboard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTruck,faTruckPickup,faVanShuttle,faDollarSign,faClipboardCheck, faTriangleExclamation, faChartLine } from '@fortawesome/free-solid-svg-icons'
-import TruckSideImg from '../Assets/TruckSide.jpg'
+import van from '../Assets/van.jpg'
 import Map from '../components/Map'
 const Dashboard = () => {
   const isProfit = false
@@ -98,7 +98,7 @@ const Dashboard = () => {
         display: 'flex',
         flexDirection: 'column',
       }}>
-        <img src={TruckSideImg} style={{width: '70%', height: 'auto'}}/>
+        <img src={van} style={{width: '70%', height: 'auto'}}/>
         <div style={{display:'flex',
         flexDirection:'row',
         justifyContent:'flex-start',

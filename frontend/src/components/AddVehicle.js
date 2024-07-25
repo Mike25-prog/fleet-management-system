@@ -14,7 +14,7 @@ const AddVehicle = () => {
         number_plate: '',
         make: '',
         model: '',
-        year: 0,
+        year: 2000,
         status: '',
         image: '',
         type:''

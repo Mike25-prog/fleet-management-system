@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import './Register.css';
 
 const Register = () => {
@@ -25,7 +24,12 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
+        // Password confirmation check
+        if (formData.password !== formData.confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
 
         try {
             const response = await fetch(url, {
@@ -69,7 +73,10 @@ const Register = () => {
                         <label>Password:</label>
                         <input type="password" name="password" value={formData.password} onChange={handleChange} required />
                     </div>
-                   
+                    <div className="form-group">
+                        <label>Confirm Password:</label>
+                        <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
+                    </div>
                     <div className="form-group">
                         <label>First Name:</label>
                         <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />

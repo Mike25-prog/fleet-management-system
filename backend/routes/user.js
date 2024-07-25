@@ -8,7 +8,7 @@ router.post('/register', async (req, res) => {
     const { username, password, first_name, last_name, email } = req.body;
     User.create({ username, password, first_name, last_name, email }, (err, result) => {
         if (err) return res.status(500).json({ error: err.message });
-        res.status(201).json({ message: 'User created successfully' });
+       if(!err){return res.status(201).json({ message: 'User created successfully' })};
     });
 });
 

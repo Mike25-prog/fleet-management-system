@@ -36,8 +36,8 @@ router.post('/login', (req, res) => {
             if (err) return res.status(500).json({ error: err.message });
             if (!passenger) return res.status(404).json({ error: 'Passenger not found' });
 
-            // Compare the password
             try {
+                // Compare the password
                 const isMatch = await bcrypt.compare(password, passenger.password);
                 console.log('Password Match:', isMatch);
 
@@ -50,6 +50,7 @@ router.post('/login', (req, res) => {
             } catch (compareError) {
                 console.error('Error comparing passwords:', compareError);
                 return res.status(500).json({ error: compareError.message });
+            }
         });
     } catch (err) {
         res.status(500).json({ error: err.message });

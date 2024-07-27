@@ -37,10 +37,19 @@ router.post('/login', (req, res) => {
             if (!passenger) return res.status(404).json({ error: 'Passenger not found' });
 
             // Compare the password
-            const isMatch = await bcrypt.compare(password, passenger.password);
-            if (!isMatch) return res.status(401).json({ error: 'Invalid credentials' });
+            try {
+                const isMatch = await bcrypt.compare(password, passenger.password);
+                console.log('Password Match:', isMatch);
 
-            res.status(200).json({ message: 'Login successful', passenger });
+                if (!isMatch) {
+                    console.log('Invalid credentials for email:', email);
+                    return res.status(401).json({ error: 'Invalid credentials' });
+                }
+
+                res.status(200).json({ message: 'Login successful', passenger });
+            } catch (compareError) {
+                console.error('Error comparing passwords:', compareError);
+                return res.status(500).json({ error: compareError.message });
         });
     } catch (err) {
         res.status(500).json({ error: err.message });

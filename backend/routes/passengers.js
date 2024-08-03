@@ -14,11 +14,8 @@ router.post('/register', async (req, res) => {
             if (err) return res.status(500).json({ error: err.message });
             if (existingPassenger) return res.status(400).json({ error: 'Email already in use' });
 
-            // Hash the password
-            const hashedPassword = await bcrypt.hash(password, 10);
-
             // Create the new passenger
-            Passenger.create({ first_name, last_name, email, password: hashedPassword, contact_number }, (err, result) => {
+            Passenger.create({ first_name, last_name, email, password, contact_number }, (err, result) => {
                 if (err) return res.status(500).json({ error: err.message });
 
                 res.status(201).json({ message: 'Passenger created successfully' });
@@ -39,11 +36,21 @@ router.post('/login', (req, res) => {
             if (err) return res.status(500).json({ error: err.message });
             if (!passenger) return res.status(404).json({ error: 'Passenger not found' });
 
-            // Compare the password
-            const isMatch = await bcrypt.compare(password, passenger.password);
-            if (!isMatch) return res.status(401).json({ error: 'Invalid credentials' });
+            try {
+                // Compare the password
+                const isMatch = await bcrypt.compare(password, passenger.password);
+                console.log('Password Match:', isMatch);
 
-            res.status(200).json({ message: 'Login successful', passenger });
+                if (!isMatch) {
+                    console.log('Invalid credentials for email:', email);
+                    return res.status(401).json({ error: 'Invalid credentials' });
+                }
+
+                res.status(200).json({ message: 'Login successful', passenger });
+            } catch (compareError) {
+                console.error('Error comparing passwords:', compareError);
+                return res.status(500).json({ error: compareError.message });
+            }
         });
     } catch (err) {
         res.status(500).json({ error: err.message });

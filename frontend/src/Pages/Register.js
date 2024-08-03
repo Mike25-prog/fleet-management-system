@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './Register.css';
 
 const Register = () => {
@@ -20,14 +21,13 @@ const Register = () => {
         });
     };
 
-    const url = 'http://localhost:5000/api/user/register';
+    const url = 'http://4.221.79.76:5000/api/user/register'; 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Password confirmation check
         if (formData.password !== formData.confirmPassword) {
-            alert('Passwords do not match!');
+            toast.error('Passwords do not match!');
             return;
         }
 
@@ -47,16 +47,16 @@ const Register = () => {
             });
 
             if (response.status !== 201) {
-                throw new Error('Registration failed');
+                const errorData = await response.json();
+                toast.error('Registration failed: ' + errorData.message);
+                return;
             }
 
             const data = await response.json();
-            console.log(data);
-            alert('Registration successful!');
+            toast.success('Registration successful!');
             navigate('/');
         } catch (error) {
-            console.error(error);
-            alert('Registration failed!');
+            toast.error('Registration failed!');
         }
     };
 

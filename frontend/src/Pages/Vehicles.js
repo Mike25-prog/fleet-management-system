@@ -5,7 +5,7 @@ import EditVehicle from '../components/EditVehicle';
 import './Vehicles.css';
 
 const Vehicles = () => {
-    const url = 'http://localhost:5000/api/vehicles';
+    const url = 'http://4.221.79.76:5000/api/vehicles';
     const [vehicles, setVehicles] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState(null);

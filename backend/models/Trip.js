@@ -1,35 +1,58 @@
-// models/Trip.js
-const { DataTypes } = require('sequelize');
-const sequelize = require('./db');
+const connection = require('../config/db');
 
-const Trip = sequelize.define('Trip', {
-  date: {
-    type: DataTypes.DATEONLY,
-    allowNull: false,
+const Trip = {
+  getAll: (callback) => {
+    console.log('getAll callback:', callback);
+    if(typeof callback !== 'function') {
+      throw new TypeError('Callback must be a function');
+    }
+    const query = 'SELECT * FROM trips';
+    connection.query(query, callback)
   },
-  time: {
-    type: DataTypes.TIME,
-    allowNull: false,
-  },
-  origin: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  destination: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  vehicleId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  driverId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-}, {
-  tableName: 'trips',
-  timestamps: false,
-});
+  writeNew: (data, callback) => {
+    console.log('writeNew data:', data);
+    console.log('writeNew callback:', callback);
+    if (typeof callback !== 'function') {
+        throw new TypeError('Callback must be a function');
+    }
+    const query = 'INSERT INTO trips SET ?';
+    const tripData = { 
+        ...data
+    };
+    connection.query(query, tripData, (err, results) => {
+        if (err) return callback(err);
+        callback(null, results);
+    });
+},
+update: (id, data, callback) => {
+  console.log('update id:', id);
+  console.log('update data:', data);
+  console.log('update callback:', callback);
+  if (typeof callback !== 'function') {
+      throw new TypeError('Callback must be a function');
+  }
+  const query = 'UPDATE trips SET ? WHERE trip_id = ?';
+  const tripData = { 
+      ...data
+  };
+  connection.query(query, [tripData, id], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+  });
+},
+
+delete: (id, callback) => {
+  console.log('delete id:', id);
+  console.log('delete callback:', callback);
+  if (typeof callback !== 'function') {
+      throw new TypeError('Callback must be a function');
+  }
+  const query = 'DELETE FROM trips WHERE trip_id = ?';
+  connection.query(query, id, (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+  });
+}
+};
 
 module.exports = Trip;

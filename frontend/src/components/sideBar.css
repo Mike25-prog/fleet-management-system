@@ -1,37 +1,68 @@
 .dashboard {
     display: flex;
-    border-right: #dddedf 2px solid;
-  }
-  
-  .sidebar {
-    width: 140px;
+    border-right: 2px solid #dddedf;
+    height: 100vh; /* Ensures the sidebar spans the full height of the viewport */
+}
+
+.sidebar {
+    width: 200px; /* Increased width for better readability */
     background-color: #fff;
     padding: 20px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     font-size: 16px;
-    color: rgb(48, 47, 47);
-    
-    
-  }
-  
-  .sidebar-item {
-    margin-bottom: 30px;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
+    color: #30302f;
+    display: flex;
+    flex-direction: column; /* Ensures vertical alignment of sidebar items */
+    justify-content: space-between; /* Space out top and bottom items */
+}
 
-  }
-   
-  .sidebar-item:hover {
+.sidebar-item {
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-item:hover {
     color: #007bff;
-  }
-  .settings {
-    bottom:13%;
-    position: absolute;
-  }
-  .log-out {
-    bottom: 5%;
-    position: absolute;
-  }
-  
+}
+
+.settings, .log-out {
+    position: relative; /* Use relative positioning for better flexibility */
+}
+
+.settings {
+    margin-top: auto; /* Pushes the settings button to the bottom of the sidebar */
+}
+
+.log-out {
+    margin-top: 10px; /* Adds spacing between settings and log-out buttons */
+}
+
+/* Styles for Vehicles, Totals, and Inactive */
+.sidebar-item.vehicles {
+    color: #1a73e8;
+    font-weight: bold;
+}
+
+.sidebar-item.totals {
+    color: #34a853;
+    font-weight: bold;
+}
+
+.sidebar-item.inactive {
+    color: #ea4335;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px; /* Adjust width for smaller screens */
+        padding: 15px;
+    }
+
+    .sidebar-item {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}

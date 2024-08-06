@@ -7,7 +7,7 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Vehicles from './Pages/Vehicles';
 import Maintenance from './Pages/Maintenance';
-import TripManagement from './components/TripManagement';
+import Trips from './components/Trips';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -22,7 +22,7 @@ const App = () => {
           <Route path='/add-vehicle' element={<AddVehicle />} />
           <Route path='/vehicles' element={<Vehicles />} />
           <Route path='/maintenance' element={<Maintenance />} />
-          <Route path='/trips' element={<TripManagement />} />
+          <Route path='/trips' element={<Trips />} />
         </Routes>
         <ToastContainer /> {/* Add ToastContainer for notifications */}
       </UserProvider>

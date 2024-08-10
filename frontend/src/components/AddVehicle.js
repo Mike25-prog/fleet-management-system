@@ -29,7 +29,7 @@ const AddVehicle = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const url = 'http://localhost:5000/api/vehicles/';
+        const url = 'http://4.221.79.76:5000/api/vehicles/';
 
         fetch(url, {
             method: 'POST',

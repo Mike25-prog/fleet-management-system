@@ -23,7 +23,7 @@ const AddDriver = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const url = 'http://localhost:5000/api/drivers/';
+        const url = 'http://4.221.79.76:5000/api/drivers/';
 
         fetch(url, {
             method: 'POST',

@@ -36,7 +36,7 @@ const Header = () => {
         <div style={{
           display:'flex',
           flexDirection:'row',
-          marginLeft:60,
+          marginLeft:30,
           
         }}>
         <img src={van} /><p style={{marginLeft:10,color:'#228800',fontSize:20,fontWeight:'bold'}}>My Fleet</p>

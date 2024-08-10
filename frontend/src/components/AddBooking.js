@@ -1,16 +1,16 @@
 import React,{useState} from 'react'
 import ComboBox from 'react-responsive-combo-box';
-
+import seatImg from '../Assets/SeatTopVeiw.png'
 const [bookingData, setBookingData] = useState({
   trip_id:'',
   passenger_id:'',
   seat_number:'',
   booking_date:'',
 });
-const url = 'http://localhost:5000/api/bookings';
-const VehicleUrl  = 'http://localhost:5000/api/vehicles/';
-const PassengerUrl = 'http://localhost:5000/api/passengers/'; 
-const TripUrl = 'http://localhost:5000/api/trips/';
+const url = 'http://4.221.79.76:5000/api/bookings';
+const VehicleUrl  = 'http://4.221.79.76:5000/api/vehicles/';
+const PassengerUrl = 'http://4.221.79.76:5000/api/passengers/'; 
+const TripUrl = 'http://4.221.79.76:5000/api/trips/';
 //get vehivles data,passenger data and trip data
 const [vehicleData, setVehicleData] = useState({
     number_plate: '',
@@ -31,8 +31,7 @@ const [tripData, setTripData] = useState({
     trip_id:'',
     vehicle_id: '',
     driver_id:'',
-    start_location_id 	end_location_id	start_time	end_time	cargo	contract_value
-
+})
 const handleSubmit = async (e) => {
  e.preventDefault();
  try {
@@ -57,9 +56,21 @@ const AddBooking = () => {
         <form onSubmit={handleSubmit}>
             <input type="text" name="trip_id" placeholder="Trip ID" onChange={handleChange} />
             <input type="text" name="passenger_id" placeholder="Passenger ID" onChange={handleChange} />
+            <div>
+               {seatOptions.map(()=>{
+                return (
+                  <div>
+                    <img 
+                     src={seatImg}
+                    />
+                  </div>
+                )
+               })}
             <input type="text" name="seat_number" placeholder="Seat Number" onChange={handleChange} />
+            </div>
             <input type="date" name="booking_date" placeholder="Booking Date" onChange={handleChange} />
             <button type="submit">Add Booking</button>
+          </form>
     </div>
   )
 }

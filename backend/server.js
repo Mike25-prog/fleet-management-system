@@ -3,7 +3,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
-const sequelize = require('./models/db'); // Assuming this is your Sequelize instance
 
 // Debug statements
 console.log('Current directory:', __dirname);

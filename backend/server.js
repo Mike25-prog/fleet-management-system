@@ -14,7 +14,7 @@ const drivers = require('./routes/drivers.js');
 const assignment = require('./routes/assignment');
 const fuellog = require('./routes/fuellog');
 const maintenance = require('./routes/maintenance');
-const trips = require('./routes/trips'); // Updated to match the correct file name
+const trips = require('./routes/trip'); // Updated to match the correct file name
 const incident = require('./routes/incident');
 const location = require('./routes/location');
 const user = require('./routes/user');
@@ -23,7 +23,7 @@ const bookings = require('./routes/bookings');
 
 const app = express();
 const corsOptions = {
-    origin: 'http://localhost:3000', // Replace with your frontend domain
+    
     optionsSuccessStatus: 200 // Some legacy browsers choke on 204
 };
 

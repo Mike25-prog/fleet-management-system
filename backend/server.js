@@ -40,6 +40,10 @@ app.use('/api/location', location);
 app.use('/api/user', user);
 app.use('/api/passengers', passengers);
 app.use('/api/bookings', bookings);
+app.get('/api/test', (req, res) => {
+  res.send('This is a test endpoint');
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {

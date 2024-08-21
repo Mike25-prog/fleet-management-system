@@ -32,8 +32,17 @@ router.delete('/:id', (req, res) => {
         res.json(results);
     }
     );
-}
-);
+}),
+//Search by date start location and end location
+router.get('/search', (req, res) => {
+    Trip.searchBy(req.query, (err, results) => {
+        if (err) return res.status(500).send(err);
+        res.json(results);
+    }
+    )
+})
+
+
 
 
 module.exports = router;

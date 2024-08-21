@@ -52,7 +52,31 @@ delete: (id, callback) => {
       if (err) return callback(err);
       callback(null, results);
   });
+},
+searchBy:(date, start_location, end_location, callback) =>{
+  console.log('searchBy:', date, '\n', start_location, '\n', end_location);
+  console.log('searchBy callback:', callback);
+
+  if (typeof callback !== 'function') {
+      throw new TypeError('Callback must be a function');
+  }
+
+  // query expects all three parameters
+  const query = `
+      SELECT * FROM trips 
+      WHERE trip_date = ? 
+      AND start_location = ? 
+      AND end_location = ?
+  `;
+  connection.query(query, [date, start_location, end_location], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+  });
+},
+
 }
-};
+
+
+
 
 module.exports = Trip;

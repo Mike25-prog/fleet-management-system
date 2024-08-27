@@ -11,8 +11,7 @@ const AddTrip = ({ onClose }) => {
         e.preventDefault();
         const newTrip = { start_location: startLocation, end_location: endLocation, start_time: startTime, end_time: endTime, status };
 
-        // Assuming you have a POST endpoint to add a new trip
-        fetch('http://4.221.79.76:5000/api/trips', {
+        fetch(process.env.REACT_APP_ENDPOINT+'api/trips', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -12,7 +12,7 @@ const Dashboard = () => {
       <SideBar/>
       <div style={{
         position: 'absolute',
-        left: 130,
+        left: 220,
         top: 50,
         width: '100%',
         

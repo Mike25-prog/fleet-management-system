@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import SideBar from './sideBar'; // Ensure SideBar component exists
+import SideBar from '../components/sideBar'; // Ensure SideBar component exists
 import AddTrip from '../components/AddTrip'; // Ensure AddTrip component exists
 import EditTrip from '../components/EditTrip'; // Ensure EditTrip component exists
 import './Trips.css';
 
 const Trips = () => {
-    const url = 'http://4.221.79.76:5000/api/trips'; // Ensure this endpoint is correct
+    const url = process.env.REACT_APP_ENDPOINT+'api/trips'; // Ensure this endpoint is correct
     const [trips, setTrips] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState(null);

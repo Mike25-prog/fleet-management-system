@@ -82,10 +82,7 @@ const AddVehicle = () => {
     };
 
     return (
-        <div style={{
-            width: '100%',
-            display: 'flex',
-        }}>
+        
             <div className="form-container">
                 <div className="form-section">
                     <h2>Add Vehicle</h2>
@@ -128,7 +125,7 @@ const AddVehicle = () => {
                 <div className="form-section">
                     <form>
                         <label>Preview</label>
-                        <img src={preview} alt="Preview" style={{ width: 300, height: 300 }} />
+                        <img src={preview} alt="Add an image to veiw" style={{ width: 300, height: 300 }} />
                         <label>
                             Image:
                             <input type="file" name="image" onChange={handleImageChange} placeholder='add image'/>
@@ -136,7 +133,7 @@ const AddVehicle = () => {
                     </form>
                 </div>
             </div>
-        </div>
+       
     );
 };
 

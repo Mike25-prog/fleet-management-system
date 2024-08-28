@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
-const fetch = require('node-fetch'); // Import node-fetch for Fetch API support in Node.js
+const axios = require('axios'); // Import axios for HTTP requests
 
 // Debug statements
 console.log('Current directory:', __dirname);
@@ -53,17 +53,17 @@ const passkey = process.env.PASSKEY;
 const auth = Buffer.from(`${consumerKey}:${consumerSecret}`).toString('base64');
 
 const getToken = async () => {
-    const response = await fetch(
-        'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials',
-        {
-            method: 'GET',
+    try {
+        const response = await axios.get('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
             headers: {
                 Authorization: `Basic ${auth}`,
             },
-        }
-    );
-    const data = await response.json();
-    return data.access_token;
+        });
+        return response.data.access_token;
+    } catch (error) {
+        console.error('Error fetching access token:', error);
+        throw new Error('Failed to get access token');
+    }
 };
 
 app.post('/api/payment', async (req, res) => {
@@ -74,32 +74,30 @@ app.post('/api/payment', async (req, res) => {
         const timestamp = new Date().toISOString().replace(/[-:T.]/g, '').slice(0, 14);
         const password = Buffer.from(shortcode + passkey + timestamp).toString('base64');
 
-        const response = await fetch(
+        const response = await axios.post(
             'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest',
             {
-                method: 'POST',
+                BusinessShortCode: shortcode,
+                Password: password,
+                Timestamp: timestamp,
+                TransactionType: 'CustomerPayBillOnline',
+                Amount: amount,
+                PartyA: phoneNumber,
+                PartyB: shortcode,
+                PhoneNumber: phoneNumber,
+                CallBackURL: 'https://your-callback-url.com/callback',
+                AccountReference: 'Booking123',
+                TransactionDesc: 'Payment for Booking',
+            },
+            {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    BusinessShortCode: shortcode,
-                    Password: password,
-                    Timestamp: timestamp,
-                    TransactionType: 'CustomerPayBillOnline',
-                    Amount: amount,
-                    PartyA: phoneNumber,
-                    PartyB: shortcode,
-                    PhoneNumber: phoneNumber,
-                    CallBackURL: 'https://your-callback-url.com/callback',
-                    AccountReference: 'Booking123',
-                    TransactionDesc: 'Payment for Booking',
-                }),
             }
         );
 
-        const responseData = await response.json();
-        res.send(responseData);
+        res.send(response.data);
     } catch (error) {
         console.error('Payment error:', error);
         res.status(500).send('Payment failed');

@@ -47,8 +47,8 @@ const Header = () => {
           justifyContent:'space-between',
         }}>
          {/*notification*/} 
-         <FontAwesomeIcon icon={faBell} color='#228800' size='2x' style={{marginRight:20,justifySelf:'center'}}/>
-         <p >{userName}</p>
+         <FontAwesomeIcon icon={faBell} color='#228800' size='2x' style={{marginRight:20,justifySelf:'center',marginTop:10}}/>
+         <p style={{marginRight:20}}>{userName}</p>
         </div>
     </header>
       )

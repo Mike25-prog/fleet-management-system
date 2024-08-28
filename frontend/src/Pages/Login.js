@@ -20,9 +20,10 @@ const Login = () => {
         });
     };
 
-    const url = 'http://4.221.79.76:5000/api/user/login';
+    const url = process.env.REACT_APP_ENDPOINT+'api/user/login';
 
     const handleSubmit = async (e) => {
+        console.log(url)
         e.preventDefault();
 
         try {

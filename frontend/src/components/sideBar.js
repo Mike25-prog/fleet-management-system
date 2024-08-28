@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import Header from './top';
 
 const SideBar = () => {
+  const handleLogout =()=>{
+    
+  }
+
   return (
     <>
       <Header />
@@ -51,7 +55,7 @@ const SideBar = () => {
               <FontAwesomeIcon icon={faGear} size='lg' /> Settings
             </div>
           </Link>
-          <Link style={{ textDecoration: 'none', color: '#228800' }} to='/'>
+          <Link style={{ textDecoration: 'none', color: '#228800' }} to='/' onClick={handleLogout}>
             <div className="sidebar-item">
               <FontAwesomeIcon icon={faSignOutAlt} size='lg' /> Log out
             </div>

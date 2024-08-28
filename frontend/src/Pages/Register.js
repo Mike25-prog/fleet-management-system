@@ -21,7 +21,7 @@ const Register = () => {
         });
     };
 
-    const url = 'http://4.221.79.76:5000/api/user/register'; 
+    const url = process.env.REACT_APP_ENDPOINT+'api/user/register'; 
 
     const handleSubmit = async (e) => {
         e.preventDefault();

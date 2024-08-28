@@ -5,7 +5,7 @@ import EditVehicle from '../components/EditVehicle';
 import './Vehicles.css';
 
 const Vehicles = () => {
-    const url = 'http://4.221.79.76:5000/api/vehicles';
+    const url = process.env.REACT_APP_ENDPOINT+'api/vehicles';
     const [vehicles, setVehicles] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState(null);
@@ -15,7 +15,7 @@ const Vehicles = () => {
             .then(res => res.json())
             .then(data => setVehicles(data))
             .catch(error => console.error('Error fetching data:', error));
-    }, [vehicles]);
+    }, []);
 
     const openAddModal = () => {
         setModalContent(<AddVehicle onClose={() => setIsModalOpen(false)} />);

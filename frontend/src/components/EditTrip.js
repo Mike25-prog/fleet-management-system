@@ -13,15 +13,15 @@ const EditTrip = ({ trip, onClose }) => {
         e.preventDefault();
         const updatedTrip = { ...trip, start_location: startLocation, end_location: endLocation, start_time: startTime, end_time: endTime, status };
 
-        fetch(`http://4.221.79.76:5000/api/trips/${trip.id}`, {
+        fetch(process.env.REACT_APP_ENDPOINT+`/api/trips/${trip.id}` , {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedTrip),
         })
         .then(res => res.json())
         .then(data => {
-            // Handle success - maybe clear the form or close the modal
             onClose();
+         
         })
         .catch(error => console.error('Error updating trip:', error));
     };

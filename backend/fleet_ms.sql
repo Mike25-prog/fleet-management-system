@@ -1,6 +1,4 @@
-CREATE DATABASE fleet_ms;
 USE fleet_ms;
-
 
 CREATE TABLE IF NOT EXISTS `users` (
     `user_id` int AUTO_INCREMENT NOT NULL,
@@ -12,28 +10,17 @@ CREATE TABLE IF NOT EXISTS `users` (
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`user_id`)
 );
-CREATE TABLE IF NOT EXISTS `locations` (
-    `location_id` int AUTO_INCREMENT NOT NULL,
-    `location` varchar(50) NOT NULL UNIQUE,
-    `cost_to_previous_town` int NOT NULL,
-    `previous_location_id` int,
-    `cost_to_next_town` int,
-    `next_location_id` int,
-);
-
-
-
 
 CREATE TABLE IF NOT EXISTS `vehicles` (
     `vehicle_id` int AUTO_INCREMENT NOT NULL,
-    `number_plate` varchar(15) NOT NULL,
+    `number_plate` varchar(15) NOT NULL UNIQUE,
     `make` varchar(50) NOT NULL,
     `model` varchar(50) NOT NULL,
     `year` int NOT NULL,
     `status` varchar(20) NOT NULL,
-   `image` varchar(255) NOT NULL,
-   `type` varchar(50) NOT NULL,
-    PRIMARY KEY (`vehicle_id`),
+    `image` varchar(255) NOT NULL,
+    `type` varchar(50) NOT NULL,
+    PRIMARY KEY (`vehicle_id`)
 );
 
 CREATE TABLE IF NOT EXISTS `drivers` (
@@ -78,25 +65,19 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
     PRIMARY KEY (`fuel_log_id`),
     FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`vehicle_id`)
 );
--- trip_id	number_plate	driver_id	start_location	end_location	start_time	end_time	cargo	contract_value
 
 CREATE TABLE IF NOT EXISTS `trips` (
     `trip_id` int AUTO_INCREMENT NOT NULL,
-    `number_plate` int NOT NULL,
-    `driver_id` int NOT NULL,
-    `start_location_id` int NOT NULL,
-    `end_location_id` int NOT NULL,
+    `number_plate` varchar(15) NOT NULL,
+    `start_location` varchar(60) NOT NULL,
+    `end_location` varchar(60) NOT NULL,
     `start_time` datetime NOT NULL,
     `end_time` datetime NOT NULL,
     `passengers` int NOT NULL,
     `contract_value` decimal(10,2) NOT NULL,
     PRIMARY KEY (`trip_id`),
-    FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`vehicle_id`),
-    FOREIGN KEY (`driver_id`) REFERENCES `drivers`(`driver_id`),
-    FOREIGN KEY (`start_location_id`) REFERENCES `locations`(`location_id`),
-    FOREIGN KEY (`end_location_id`) REFERENCES `locations`(`location_id`)
+    FOREIGN KEY (`number_plate`) REFERENCES `vehicles`(`number_plate`)
 );
-
 
 CREATE TABLE IF NOT EXISTS `incidents` (
     `incident_id` int AUTO_INCREMENT NOT NULL,
@@ -110,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `incidents` (
     FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`vehicle_id`),
     FOREIGN KEY (`driver_id`) REFERENCES `drivers`(`driver_id`)
 );
+
 CREATE TABLE IF NOT EXISTS `passengers` (
     `passenger_id` int AUTO_INCREMENT NOT NULL,
     `first_name` varchar(50) NOT NULL,

@@ -1,7 +1,7 @@
 import React from 'react';
 import './sideBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartSimple, faCircleRadiation, faLocationCrosshairs, faTruck, faGears, faGear, faTachometerAlt, faSignOutAlt, faCar } from '@fortawesome/free-solid-svg-icons';
+import { faChartSimple, faCircleRadiation, faLocationCrosshairs, faTruck, faGears, faGear, faTachometerAlt, faSignOutAlt, faCar, faReceipt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import Header from './top';
 
@@ -20,9 +20,9 @@ const SideBar = () => {
               <FontAwesomeIcon icon={faTachometerAlt} size='lg' /> Dashboard
             </div>
           </Link>
-          <Link style={{ textDecoration: 'none', color: '#228800' }} to='/live-tracking'>
+          <Link style={{ textDecoration: 'none', color: '#228800' }} to='/bookings'>
             <div className="sidebar-item">
-              <FontAwesomeIcon icon={faLocationCrosshairs} size='lg' /> Live Tracking
+              <FontAwesomeIcon icon={faReceipt} size='lg' /> Bookings
             </div>
           </Link>
           <Link style={{ textDecoration: 'none', color: '#228800' }} to='/vehicles'>

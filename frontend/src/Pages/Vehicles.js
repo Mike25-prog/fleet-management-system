@@ -5,7 +5,7 @@ import EditVehicle from '../components/EditVehicle';
 import './Vehicles.css';
 
 const Vehicles = () => {
-    const url = process.env.REACT_APP_ENDPOINT+'api/vehicles';
+    const url = process.env.REACT_APP_ENDPOINT+'api/vehicles/';
     const [vehicles, setVehicles] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState(null);
@@ -29,7 +29,7 @@ const Vehicles = () => {
 
     const handleDelete = (id) => {
         console.log(url+id)
-        fetch(`${url}/${id}`, {
+        fetch(url+id, {
             method: 'DELETE'
         })
         .then(res => {

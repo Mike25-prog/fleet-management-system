@@ -10,6 +10,7 @@ import Maintenance from './Pages/Maintenance';
 import Trips from './Pages/Trips';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Booking from './Pages/Booking';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='/vehicles' element={<Vehicles />} />
           <Route path='/maintenance' element={<Maintenance />} />
           <Route path='/trips' element={<Trips />} />
+          <Route path='/booking' element={<Booking/>}/>
         </Routes>
         <ToastContainer /> 
       </UserProvider>

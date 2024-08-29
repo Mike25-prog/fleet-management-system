@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 );
 
 CREATE TABLE IF NOT EXISTS `vehicles` (
-    `vehicle_id` int AUTO_INCREMENT NOT NULL,
     `number_plate` varchar(15) NOT NULL UNIQUE,
     `make` varchar(50) NOT NULL,
     `model` varchar(50) NOT NULL,
@@ -20,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
     `status` varchar(20) NOT NULL,
     `image` varchar(255) NOT NULL,
     `type` varchar(50) NOT NULL,
-    PRIMARY KEY (`vehicle_id`)
+    PRIMARY KEY (`number_plate`)
 );
 
 CREATE TABLE IF NOT EXISTS `drivers` (
@@ -36,34 +35,34 @@ CREATE TABLE IF NOT EXISTS `drivers` (
 
 CREATE TABLE IF NOT EXISTS `assignments` (
     `assignment_id` int AUTO_INCREMENT NOT NULL,
-    `vehicle_id` int NOT NULL,
+    `number_plate` varchar(15) NOT NULL UNIQUE,
     `driver_id` int NOT NULL,
     `assignment_start_date` date NOT NULL,
     `assignment_end_date` date NOT NULL,
     PRIMARY KEY (`assignment_id`),
-    FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`vehicle_id`),
+   FOREIGN KEY (`number_plate`) REFERENCES `vehicles`(`number_plate`),
     FOREIGN KEY (`driver_id`) REFERENCES `drivers`(`driver_id`)
 );
 
 CREATE TABLE IF NOT EXISTS `maintenance` (
     `maintenance_id` int AUTO_INCREMENT NOT NULL,
-    `vehicle_id` int NOT NULL,
+    `number_plate` varchar(15) NOT NULL,
     `maintenance_date` date NOT NULL,
     `description` text NOT NULL,
     `cost` decimal(10,2) NOT NULL,
     PRIMARY KEY (`maintenance_id`),
-    FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`vehicle_id`)
+    FOREIGN KEY (`number_plate`) REFERENCES `vehicles`(`number_plate`)
 );
 
 CREATE TABLE IF NOT EXISTS `fuel_logs` (
     `fuel_log_id` int AUTO_INCREMENT NOT NULL,
-    `vehicle_id` int NOT NULL,
+    `number_plate` varchar(15) NOT NULL,
     `date` date NOT NULL,
     `amount` decimal(10,2) NOT NULL,
     `cost` decimal(10,2) NOT NULL,
     `odometer_reading` int NOT NULL,
     PRIMARY KEY (`fuel_log_id`),
-    FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`vehicle_id`)
+   FOREIGN KEY (`number_plate`) REFERENCES `vehicles`(`number_plate`)
 );
 
 CREATE TABLE IF NOT EXISTS `trips` (
@@ -81,14 +80,14 @@ CREATE TABLE IF NOT EXISTS `trips` (
 
 CREATE TABLE IF NOT EXISTS `incidents` (
     `incident_id` int AUTO_INCREMENT NOT NULL,
-    `vehicle_id` int NOT NULL,
+   `number_plate` varchar(15) NOT NULL,
     `driver_id` int NOT NULL,
     `date` date NOT NULL,
     `incident_type` varchar(60) NOT NULL,
     `description` text NOT NULL,
     `damage_cost` decimal(10,2) NOT NULL,
     PRIMARY KEY (`incident_id`),
-    FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`vehicle_id`),
+   FOREIGN KEY (`number_plate`) REFERENCES `vehicles`(`number_plate`),
     FOREIGN KEY (`driver_id`) REFERENCES `drivers`(`driver_id`)
 );
 

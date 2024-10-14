@@ -48,7 +48,13 @@ const Trips = () => {
     return (
         <div>
             <SideBar />
-            <div className='trip-container'>
+            <div style={{
+        position: 'absolute',
+        left: 130,
+        top: 50,
+        width: '90%',
+        
+      }}>
                 <div className="content-area">
                     <table>
                         <thead>

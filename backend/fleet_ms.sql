@@ -111,3 +111,12 @@ CREATE TABLE IF NOT EXISTS `bookings` (
     FOREIGN KEY (`trip_id`) REFERENCES `trips`(`trip_id`),
     FOREIGN KEY (`passenger_id`) REFERENCES `passengers`(`passenger_id`)
 );
+CREATE TABLE payments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    mpesa_receipt VARCHAR(50) UNIQUE NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    phone_number VARCHAR(15) NOT NULL,
+    transaction_date DATETIME NOT NULL,
+    checkout_request_id VARCHAR(50) NOT NULL
+);
+

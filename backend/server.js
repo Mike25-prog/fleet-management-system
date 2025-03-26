@@ -9,7 +9,7 @@ const axios = require('axios'); // Import axios for HTTP requests
 console.log('Current directory:', __dirname);
 console.log('Files in routes directory:', fs.readdirSync(path.join(__dirname, 'routes')));
 
-const vehicles = require('./routes/vehicles');
+const vehicleRoutes = require('./routes/vehicles');
 const drivers = require('./routes/drivers.js');
 const assignment = require('./routes/assignment');
 const fuellog = require('./routes/fuellog');
@@ -20,16 +20,26 @@ const location = require('./routes/location');
 const user = require('./routes/user');
 const passengers = require('./routes/passengers');
 const bookings = require('./routes/bookings');
+const seatsRouter = require('./routes/seats');
+const mpesaRoutes = require("./routes/mpesa");
+
+
 
 const app = express();
 const corsOptions = {
     optionsSuccessStatus: 200 // Some legacy browsers choke on 204
 };
 
-app.use(cors(corsOptions));
-app.use(bodyParser.json());
+app.use(express.json()); // ✅ Ensure JSON parsing
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/vehicles', vehicles);
+//app.use(cors(corsOptions));
+//app.use(bodyParser.json());
+
+app.use(cors()); // Enable CORS
+app.use(bodyParser.json()); // Parse JSON request bodies
+
+app.use('/api/vehicles', vehicleRoutes);
 app.use('/api/drivers', drivers);
 app.use('/api/assignment', assignment);
 app.use('/api/fuellog', fuellog);
@@ -40,6 +50,11 @@ app.use('/api/location', location);
 app.use('/api/user', user);
 app.use('/api/passengers', passengers);
 app.use('/api/bookings', bookings);
+app.use("/mpesa", mpesaRoutes);
+//app.use('/api/seats', seatRoutes);
+app.use('/trips', seatsRouter); // Use the seats router for /trips routes
+//app.use('/api/seats', seatsRouter);
+
 
 app.get('/api/test', (req, res) => {
     res.status(200).send('This is a test endpoint');

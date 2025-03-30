@@ -25,57 +25,10 @@ const Dashboard = () => {
         margin: 20
       }}>
       <div class="table-container" >
-      <table>
-        <thead> 
-        <th> Vehicles </th>
-        <th> Total</th>
-        <th> Inactive</th>
-
-        </thead>
-        <tbody>
-        <tr>
-        <td> <FontAwesomeIcon icon={faTruck} size='xl' style={{ marginRight:20 }} color='navy' /> Trucks</td>
-        <td> 10</td>
-        <td> 1</td>
-        </tr>
-        <tr>
-        <td> <FontAwesomeIcon icon={faTruckPickup} style={{ marginRight:20 }} color='green' size='xl'/> Pick-Up</td>
-        <td> 5</td>
-        <td> 0</td>
-        </tr>
-        <tr>
-        <td> <FontAwesomeIcon icon={faVanShuttle} style={{ marginRight:20 }} color='orange' size='xl'/> Vans</td>
-        <td> 3</td>
-        <td> 0</td>
-        </tr>
-        </tbody>
-      </table>
+      
       </div>
       <div className='table-container' >
-      <table>
-        <thead>
-        <th> Drivers </th>
-        <th> Total</th>
-        <th> Available</th>
-        </thead>
-        <tbody>
-        <tr>
-        <td> <FontAwesomeIcon icon={faTruck} size='xl' style={{ marginRight:20 }} color='navy' /> Drivers</td>
-        <td> 10</td>
-        <td> 1</td>
-        </tr>
-        <tr>
-        <td> <FontAwesomeIcon icon={faTruckPickup} style={{ marginRight:20 }} color='green' size='xl'/> Pick-Up</td>
-        <td> 5</td>
-        <td> 0</td>
-        </tr>
-        <tr>
-        <td> <FontAwesomeIcon icon={faVanShuttle} style={{ marginRight:20 }} color='orange' size='xl'/> Vans</td>
-        <td> 3</td>
-        <td> 0</td>
-        </tr>
-        </tbody>
-      </table>
+      
       </div>
       <div style={{
         width: '13%',
@@ -89,16 +42,15 @@ const Dashboard = () => {
         padding: 10
 
       }}>
-        <p >Profit or Loss</p>
-        <FontAwesomeIcon icon={{faDollarSign}} size='xl' color='black'/>
-       <h2 style={{color: isProfit ? 'green' : 'red'}}> $1000</h2>
+        
       </div>
+
       <div style={{
         marginLeft: 15,
         display: 'flex',
         flexDirection: 'column',
       }}>
-        <img src={van} style={{width: '70%', height: 'auto'}}/>
+        
         <div style={{display:'flex',
         flexDirection:'row',
         justifyContent:'flex-start',
@@ -109,8 +61,7 @@ const Dashboard = () => {
           display:'flex',
           flexDirection:'row'
         }}>
-        <FontAwesomeIcon icon={faClipboardCheck} size='xl' color='green'style={{marginRight:10}}/><p>On time 101</p>
-        <FontAwesomeIcon icon={faTriangleExclamation} size='xl' color='red' style={{marginLeft:20,marginRight:10}}/><p>Delayed 10</p>
+        
       </div>
       </div>
       </div>
@@ -127,11 +78,7 @@ const Dashboard = () => {
           flexDirection:'column'
           
         }}>
-        <h4>Live Tracking</h4>
-        <img src='https://www.w3schools.com/w3images/avatar3.png' style={{
-          width:'40%', borderRadius:'50%',
-        }}/>
-        <p>Driver Name</p>
+        
         </div>
         <div style={{
           width:'40%',
@@ -140,12 +87,64 @@ const Dashboard = () => {
           justifyContent:'center',
           alignItems:'center'
         }}>
-          <Map/>
+          
         </div>
     </div>
     </div>
     </div>
   )
 }
+
+export default Dashboard
+
+
+
+
+import React from 'react'
+import SideBar from '../components/sideBar'
+import './Dashboard.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTruck,faTruckPickup,faVanShuttle,faDollarSign,faClipboardCheck, faTriangleExclamation, faChartLine } from '@fortawesome/free-solid-svg-icons'
+import van from '../Assets/van.jpg'
+import Map from '../components/Map'
+import {useEffect, useState } from "react"
+import { useBooking } from "../context/BookingContext"
+import TripList from "../components/TripList"
+
+
+
+const Dashboard = () => {
+  console.log("Dashboard component is rendering...");
+
+  const isProfit = false
+  const { setSelectedTrip } = useBooking();
+  const [trips, setTrips] = useState([]);
+
+
+useEffect(() => {
+  console.log("Fetching trips..."); // ✅ Debugging
+  fetch("http://localhost:5000/api/trips")
+      .then(res => res.json())
+      .then(data => {
+          console.log("Trips received from API:", data); // ✅ Log API response
+          setTrips(data);
+      })
+      .catch(err => console.error("Error fetching trips:", err));
+}, []);
+
+return (
+  <div className="dashboard">
+      <SideBar />
+      <div className="main-content">
+          <div className="center-section">{/* This ensures balance */}</div>
+          <div className="available-trips">
+              
+          </div>
+      </div>
+  </div>
+);
+
+
+};
 
 export default Dashboard
